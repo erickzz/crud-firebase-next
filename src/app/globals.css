@@ -100,6 +100,21 @@ a {
   text-decoration: none;
 }
 
+.navbar {
+  background-color: #fff;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.navbar button {
+  font-size: 1.5rem;
+  padding: 0.3rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
