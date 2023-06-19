@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import classes from './page.module.css';
 import { useRouter } from 'next/navigation';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
@@ -16,17 +16,21 @@ const Home = () => {
     router.push('/login');
   };
 
-  const auth = getAuth(app);
-  const user = auth.currentUser;
+  useEffect(() => {
+    const auth = getAuth(app);
+    const user = auth.currentUser;
 
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      setLogado(true);
-      console.log(user.uid);
-    }
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setLogado(true);
+        console.log(user.uid);
+      } else {
+        setLogado(false);
+      }
+    });
   });
 
-  const deslogar = () => {
+  const deslogarHandler = () => {
     deslogar();
   };
 
@@ -41,7 +45,7 @@ const Home = () => {
           Firebase
         </p>
         <p className={classes.logado}>{logado ? 'Logado.' : 'Não Logado'}</p>
-        {logado ? <button onClick={deslogar}>Deslogar</button> : null}
+        {logado ? <button onClick={deslogarHandler}>Deslogar</button> : null}
       </div>
     </>
   );
