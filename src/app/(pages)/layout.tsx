@@ -20,13 +20,11 @@ export default function RootLayout({
     router.push('/');
   };
   return (
-    <html lang="pt-br">
-      <body className={inter.className}>
-        <div className="navbar">
-          <button onClick={navegarHome}>Home</button>
-        </div>
-        {children}
-      </body>
-    </html>
+    <>
+      <div className="navbar">
+        <button onClick={navegarHome}>Home</button>
+      </div>
+      {children}
+    </>
   );
 }

@@ -1,34 +1,19 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import classes from './page.module.css';
 import { useRouter } from 'next/navigation';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import app from './firebase/config';
 import deslogar from './firebase/auth/logout';
+import AuthContext from '@/context/auth-context';
 
 const Home = () => {
-  const [logado, setLogado] = useState<boolean>(false);
+  const ctx = useContext(AuthContext);
 
   const router = useRouter();
 
   const navegarCadastro = () => {
     router.push('/login');
   };
-
-  useEffect(() => {
-    const auth = getAuth(app);
-    const user = auth.currentUser;
-
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setLogado(true);
-        console.log(user.uid);
-      } else {
-        setLogado(false);
-      }
-    });
-  });
 
   const deslogarHandler = () => {
     deslogar();
@@ -44,8 +29,12 @@ const Home = () => {
           Aplicação teste com o intuito de realizar um CRUD utilizando o
           Firebase
         </p>
-        <p className={classes.logado}>{logado ? 'Logado.' : 'Não Logado'}</p>
-        {logado ? <button onClick={deslogarHandler}>Deslogar</button> : null}
+        <p className={classes.logado}>
+          {ctx.isLogged ? 'Logado.' : 'Não Logado'}
+        </p>
+        {ctx.isLogged ? (
+          <button onClick={deslogarHandler}>Deslogar</button>
+        ) : null}
       </div>
     </>
   );
