@@ -1,43 +1,55 @@
 'use client';
 
-import { useState, useContext } from 'react';
-import classes from './page.module.css';
+import { useState } from 'react';
+import './login.css';
+import logar from '@/app/firebase/auth/logar';
 import { useRouter } from 'next/navigation';
-import deslogar from './firebase/auth/logout';
-import AuthContext from '@/context/auth-context';
 
-const Home = () => {
-  const ctx = useContext(AuthContext);
-
+const Login = () => {
   const router = useRouter();
 
-  const navegarCadastro = () => {
-    router.push('/login');
-  };
+  const [email, setEmail] = useState<string>('');
+  const [senha, setSenha] = useState<string>('');
 
-  const deslogarHandler = () => {
-    deslogar();
+  const formSubmitHandler = (e: React.FormEvent) => {
+    e.preventDefault();
+    logar(email, senha);
+    router.push('/');
   };
 
   return (
-    <>
-      <div className="navbar">
-        <button onClick={navegarCadastro}>Entrar</button>
+    <div className="containerLogin">
+      <h2>Logado: Não</h2>
+      <form onSubmit={formSubmitHandler} className="formLogin">
+        <label htmlFor="email">E-mail</label>
+        <input
+          id="email"
+          type="email"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setEmail(e.target.value)
+          }
+        />
+        <label htmlFor="senha">Senha</label>
+        <input
+          id="senha"
+          type="password"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setSenha(e.target.value)
+          }
+        />
+        <button className="button" type="submit">
+          Logar
+        </button>
+      </form>
+
+      <div className="loginCadastro">
+        <p>Não possui login? Cadastre-se</p>
+        <button className="button" onClick={() => router.push('/cadastro')}>
+          Cadastrar
+        </button>
       </div>
-      <div className={classes.container}>
-        <p>
-          Aplicação teste com o intuito de realizar um CRUD utilizando o
-          Firebase
-        </p>
-        <p className={classes.logado}>
-          {ctx.isLogged ? 'Logado.' : 'Não Logado'}
-        </p>
-        {ctx.isLogged ? (
-          <button onClick={deslogarHandler}>Deslogar</button>
-        ) : null}
-      </div>
-    </>
+    </div>
   );
 };
 
-export default Home;
+export default Login;

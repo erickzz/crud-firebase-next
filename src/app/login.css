@@ -1,0 +1,60 @@
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerLogin {
+  width: 20%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff;
+  border: 3px solid rgb(1, 34, 105);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.containerLogin p {
+  color: #424242;
+}
+
+.formLogin {
+  width: 100%;
+  min-height: 60%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: end;
+}
+
+.formLogin input {
+  border: 2px solid rgb(1, 34, 105);
+  border-radius: 5px;
+  font-size: 1.4rem;
+  width: 80%;
+}
+
+.button {
+  margin: 15px;
+  background-color: rgb(1, 34, 105);
+  color: #fff;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  width: 50%;
+  cursor: pointer;
+}
+
+.loginCadastro {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import '../login/login.css';
+import '../../login.css';
 import { useRouter } from 'next/navigation';
 import cadastrar from '@/app/firebase/auth/cadastrar';
 
@@ -10,16 +10,19 @@ const Cadastro = () => {
 
   const [email, setEmail] = useState<string>('');
   const [senha, setSenha] = useState<string>('');
+  const [nome, setNome] = useState<string>('');
+  const [profissao, setProfissao] = useState<string>('');
+  const [cidade, setCidade] = useState<string>('');
 
   const formSubmitHandler = async (e: React.FormEvent) => {
     e.preventDefault();
     cadastrar(email, senha);
     console.log(email, senha);
-    router.push('/login');
+    router.push('/');
   };
 
   const navegarParaLogin = () => {
-    router.push('login');
+    router.push('/');
   };
 
   return (
@@ -41,10 +44,36 @@ const Cadastro = () => {
             setSenha(e.target.value)
           }
         />
-        <button type="submit">Cadastrar</button>
+        <label htmlFor="nome">Nome</label>
+        <input
+          id="nome"
+          type="text"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setNome(e.target.value)
+          }
+        />
+        <label htmlFor="profissao">Profissão</label>
+        <input
+          id="profissao"
+          type="text"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setProfissao(e.target.value)
+          }
+        />
+        <label htmlFor="cidade">Cidade</label>
+        <input
+          id="cidade"
+          type="text"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setCidade(e.target.value)
+          }
+        />
+        <button className="button" type="submit">
+          Cadastrar
+        </button>
       </form>
 
-      <button className="botaoCadastro" onClick={navegarParaLogin}>
+      <button className="button" onClick={navegarParaLogin}>
         Voltar
       </button>
     </div>
