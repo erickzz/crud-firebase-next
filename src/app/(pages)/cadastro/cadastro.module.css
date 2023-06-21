@@ -1,0 +1,65 @@
+.body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerCadastro {
+  width: 20%;
+  height: 45vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+}
+
+.containerCadastro p {
+  color: #424242;
+}
+
+.formCadastro {
+  width: 80%;
+  min-height: 60%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+}
+
+.formCadastro input {
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #bebebe;
+}
+
+.formCadastro label {
+  margin: 5px;
+}
+
+.button {
+  margin-top: 10px;
+  background-color: rgb(1, 34, 105);
+  color: #fff;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.buttonDeslogar {
+  margin-top: 10px;
+  background-color: rgb(1, 34, 105);
+  color: #fff;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  width: 50%;
+  cursor: pointer;
+}

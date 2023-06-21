@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import '../../login.css';
+import classes from './cadastro.module.css';
 import { useRouter } from 'next/navigation';
 import cadastrar from '@/app/firebase/auth/cadastrar';
 
@@ -26,8 +26,8 @@ const Cadastro = () => {
   };
 
   return (
-    <div className="containerLogin">
-      <form onSubmit={formSubmitHandler} className="formLogin">
+    <div className={classes.containerCadastro}>
+      <form onSubmit={formSubmitHandler} className={classes.formCadastro}>
         <label htmlFor="email">E-mail</label>
         <input
           id="email"
@@ -68,12 +68,12 @@ const Cadastro = () => {
             setCidade(e.target.value)
           }
         />
-        <button className="button" type="submit">
+        <button className={classes.button} type="submit">
           Cadastrar
         </button>
       </form>
 
-      <button className="button" onClick={navegarParaLogin}>
+      <button className={classes.button} onClick={navegarParaLogin}>
         Voltar
       </button>
     </div>
