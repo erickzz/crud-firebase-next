@@ -26,56 +26,58 @@ const Cadastro = () => {
   };
 
   return (
-    <div className={classes.containerCadastro}>
-      <form onSubmit={formSubmitHandler} className={classes.formCadastro}>
-        <label htmlFor="email">E-mail</label>
-        <input
-          id="email"
-          type="email"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setEmail(e.target.value)
-          }
-        />
-        <label htmlFor="senha">Senha</label>
-        <input
-          id="senha"
-          type="password"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setSenha(e.target.value)
-          }
-        />
-        <label htmlFor="nome">Nome</label>
-        <input
-          id="nome"
-          type="text"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setNome(e.target.value)
-          }
-        />
-        <label htmlFor="profissao">Profissão</label>
-        <input
-          id="profissao"
-          type="text"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setProfissao(e.target.value)
-          }
-        />
-        <label htmlFor="cidade">Cidade</label>
-        <input
-          id="cidade"
-          type="text"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setCidade(e.target.value)
-          }
-        />
-        <button className={classes.button} type="submit">
-          Cadastrar
-        </button>
-      </form>
+    <div className={classes.container}>
+      <div className={classes.containerCadastro}>
+        <form onSubmit={formSubmitHandler} className={classes.formCadastro}>
+          <label htmlFor="email">E-mail</label>
+          <input
+            id="email"
+            type="email"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setEmail(e.target.value)
+            }
+          />
+          <label htmlFor="senha">Senha</label>
+          <input
+            id="senha"
+            type="password"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setSenha(e.target.value)
+            }
+          />
+          <label htmlFor="nome">Nome</label>
+          <input
+            id="nome"
+            type="text"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setNome(e.target.value)
+            }
+          />
+          <label htmlFor="profissao">Profissão</label>
+          <input
+            id="profissao"
+            type="text"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setProfissao(e.target.value)
+            }
+          />
+          <label htmlFor="cidade">Cidade</label>
+          <input
+            id="cidade"
+            type="text"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setCidade(e.target.value)
+            }
+          />
+          <button className={classes.button} type="submit">
+            Cadastrar
+          </button>
+        </form>
 
-      <button className={classes.button} onClick={navegarParaLogin}>
-        Voltar
-      </button>
+        <button className={classes.button} onClick={navegarParaLogin}>
+          Voltar
+        </button>
+      </div>
     </div>
   );
 };
