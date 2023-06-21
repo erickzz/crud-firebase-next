@@ -1,11 +1,11 @@
 'use client';
 
 import { useState, useContext } from 'react';
-import classes from './login.module.css';
-import logar from '@/app/firebase/auth/logar';
-import logout from '@/app/firebase/auth/logout';
 import { useRouter } from 'next/navigation';
 import AuthContext from './context/auth-context';
+import logar from '@/app/firebase/auth/logar';
+import logout from '@/app/firebase/auth/logout';
+import classes from './login.module.css';
 
 const Login = () => {
   const router = useRouter();

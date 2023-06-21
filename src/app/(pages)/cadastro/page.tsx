@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import classes from './cadastro.module.css';
 import { useRouter } from 'next/navigation';
 import cadastrar from '@/app/firebase/auth/cadastrar';
+import classes from './cadastro.module.css';
 
 const Cadastro = () => {
   const router = useRouter();
