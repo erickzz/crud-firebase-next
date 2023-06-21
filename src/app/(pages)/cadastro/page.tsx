@@ -16,7 +16,7 @@ const Cadastro = () => {
 
   const formSubmitHandler = async (e: React.FormEvent) => {
     e.preventDefault();
-    cadastrar(email, senha);
+    cadastrar(email, senha, nome, profissao, cidade);
     console.log(email, senha);
     router.push('/');
   };
