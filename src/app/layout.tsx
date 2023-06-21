@@ -1,6 +1,6 @@
 'use client';
 
-import { AuthContextProvider } from '@/context/auth-context';
+import { AuthContextProvider } from './context/auth-context';
 import './globals.css';
 import { Inter } from 'next/font/google';
 import { useRouter } from 'next/navigation';
