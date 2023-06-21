@@ -56,7 +56,7 @@ const Login = () => {
           </button>
         </form>
 
-        <div className={classes.loginCadastro}>
+        <div className={classes.containerCadastro}>
           <p>Não possui login? Cadastre-se</p>
           <button
             className={classes.button}
