@@ -15,7 +15,7 @@ export const AuthContextProvider: React.FC<{ children: React.ReactNode }> = (
 
   useEffect(() => {
     const auth = getAuth(app);
-    const user = auth.currentUser;
+    const userAuth = auth.currentUser;
 
     onAuthStateChanged(auth, (user) => {
       if (user) {

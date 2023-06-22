@@ -1,10 +1,9 @@
 'use client';
 
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import AuthContext from '../../context/auth-context';
 import logar from '@/app/firebase/auth/logar';
-import logout from '@/app/firebase/auth/logout';
 import classes from './login.module.css';
 
 const Login = () => {
@@ -20,18 +19,18 @@ const Login = () => {
     logar(email, senha);
     setEmail('');
     setSenha('');
-    router.push('/users');
+    console.log(ctx.isLogged);
   };
+
+  useEffect(() => {
+    if (ctx.isLogged) {
+      router.push('/users');
+    }
+  });
 
   return (
     <div className={classes.container}>
-      <h2>Logado: {ctx.isLogged ? 'Sim' : 'Não'}</h2>
       <div className={classes.containerLogin}>
-        {ctx.isLogged && (
-          <button className={classes.buttonDeslogar} onClick={logout}>
-            Deslogar
-          </button>
-        )}
         <form onSubmit={formSubmitHandler} className={classes.formLogin}>
           <label htmlFor="email">E-mail</label>
           <input
