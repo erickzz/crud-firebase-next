@@ -1,0 +1,22 @@
+.tableContainer {
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tableUser {
+  width: 90%;
+  text-align: center;
+}
+
+.tableUser thead {
+  background-color: rgb(1, 34, 105);
+  color: #fff;
+}
+
+.tableUser thead tr th {
+  padding: 10px;
+  border-radius: 10px;
+}
