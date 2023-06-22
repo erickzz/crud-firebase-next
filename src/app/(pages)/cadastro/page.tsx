@@ -18,7 +18,7 @@ const Cadastro = () => {
     e.preventDefault();
     cadastrar(email, senha, nome, profissao, cidade);
     console.log(email, senha);
-    router.push('/');
+    router.push('/users');
   };
 
   const navegarParaLogin = () => {

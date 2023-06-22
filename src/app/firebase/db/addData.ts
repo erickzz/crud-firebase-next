@@ -14,7 +14,8 @@ type user = {email:string,nome:string,profissao:string,cidade:string,admin:boole
                 nome:data.nome,
                 profissao:data.profissao,
                 cidade:data.cidade,
-                admin:data.admin
+                admin:data.admin,
+                id:id
             })
         }catch(e){
             error = e

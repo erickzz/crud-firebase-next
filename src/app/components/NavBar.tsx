@@ -11,7 +11,11 @@ const NavBar = () => {
     <div className={classes.navbar}>
       <ul className={classes.ulNav}>
         <li>
-          <Link href="/">Logo</Link>
+          {ctx.isLogged ? (
+            <a className={classes.logo}> Logo </a>
+          ) : (
+            <Link href="/">Logo</Link>
+          )}
         </li>
         <li>
           {ctx.isLogged ? (

@@ -13,6 +13,7 @@ type userType = {
   email: string;
   cidade: string;
   profissao: string;
+  id: string;
 };
 
 const Users = () => {
@@ -33,12 +34,9 @@ const Users = () => {
     retrieveUsers();
   }, [ctx.isLogged]);
 
-  const test = {
-    nome: 'Erick3',
-    email: 'erick3@erick.com',
-    cidade: 'Cidade 3',
-    profissao: 'Nada3',
-  };
+  const renderUsers = usersData?.map((user: userType) => {
+    return <UserCard key={user.id} user={user} />;
+  });
   return (
     <div className={classes.tableContainer}>
       <table className={classes.tableUser}>
@@ -50,10 +48,7 @@ const Users = () => {
             <th>Profissão</th>
           </tr>
         </thead>
-        <tbody>
-          <UserCard user={test} />
-          <UserCard user={test} />
-        </tbody>
+        <tbody>{renderUsers}</tbody>
       </table>
     </div>
   );

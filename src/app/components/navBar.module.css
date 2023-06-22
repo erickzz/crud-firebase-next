@@ -1,3 +1,7 @@
+.logo {
+  cursor: pointer;
+}
+
 .navbar {
   width: 100vw;
   height: 5vh;
