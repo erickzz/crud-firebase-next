@@ -74,7 +74,10 @@ const Cadastro = () => {
           </button>
         </form>
 
-        <button className={classes.button} onClick={navegarParaLogin}>
+        <button
+          className={`${classes.button} ${classes.buttonVoltar}`}
+          onClick={navegarParaLogin}
+        >
           Voltar
         </button>
       </div>

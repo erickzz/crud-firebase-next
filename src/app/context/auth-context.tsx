@@ -11,16 +11,16 @@ const AuthContext = createContext(defaultContext);
 export const AuthContextProvider: React.FC<{ children: React.ReactNode }> = (
   props
 ) => {
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState<boolean>(false);
 
   useEffect(() => {
     const auth = getAuth(app);
-    const userAuth = auth.currentUser;
+    //const userAuth = auth.currentUser;
 
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setIsLogged(true);
-        console.log(user.uid);
+        //console.log(user.uid);
       } else {
         setIsLogged(false);
       }
