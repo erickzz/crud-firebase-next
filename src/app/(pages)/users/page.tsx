@@ -18,7 +18,6 @@ const Users = () => {
     const retrieveUsers = async () => {
       const data = await getData('users');
       setUsersData(data.result!);
-      console.log(usersData);
     };
     retrieveUsers();
   }, []);
