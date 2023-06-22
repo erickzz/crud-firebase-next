@@ -3,7 +3,7 @@
 import { AuthContextProvider } from './context/auth-context';
 import './globals.css';
 import { Inter } from 'next/font/google';
-import { useRouter } from 'next/navigation';
+import NavBar from './components/navBar';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
@@ -16,14 +16,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const router = useRouter();
-  const navegarHome = () => {
-    router.push('/');
-  };
   return (
     <html lang="pt-br">
       <AuthContextProvider>
-        <body className={inter.className}>{children}</body>
+        <body className={inter.className}>
+          <NavBar />
+          {children}
+        </body>
       </AuthContextProvider>
     </html>
   );

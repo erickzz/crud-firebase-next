@@ -22,7 +22,7 @@ const Cadastro = () => {
   };
 
   const navegarParaLogin = () => {
-    router.push('/');
+    router.push('/login');
   };
 
   return (
