@@ -1,24 +1,30 @@
 import classes from './navBar.module.css';
 import Link from 'next/link';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import AuthContext from '../context/auth-context';
 import logout from '../firebase/auth/logout';
 
 const NavBar = () => {
   const ctx = useContext(AuthContext);
 
+  const [firstRender, setFirstRender] = useState<boolean>(true);
+  const [isLogged, setIsLogged] = useState<boolean>(ctx.isLogged);
+
+  useEffect(() => {
+    setIsLogged(ctx.isLogged);
+  }, [ctx.isLogged]);
   return (
     <div className={classes.navbar}>
       <ul className={classes.ulNav}>
         <li>
-          {ctx.isLogged ? (
+          {isLogged ? (
             <a className={classes.logo}> Logo </a>
           ) : (
             <Link href="/">Logo</Link>
           )}
         </li>
         <li>
-          {ctx.isLogged ? (
+          {isLogged ? (
             <Link href="/login" onClick={logout}>
               Deslogar
             </Link>
