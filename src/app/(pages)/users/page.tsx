@@ -38,6 +38,7 @@ const Users = () => {
         const retrieveUsers = async () => {
           const data = await getData('users');
           setUsersData(data.result!);
+          setLoading(false);
         };
         retrieveUsers();
       }
@@ -48,12 +49,7 @@ const Users = () => {
     } else {
       setFirstRender(false);
     }
-    setLoading(false);
-  }, [ctx.isLogged, firstRender]);
-
-  const renderLoading = (
-    <BeatLoader color={'#012269'} loading={loading} size={60} />
-  );
+  }, [ctx.isLogged, firstRender, router]);
 
   const renderUsers = usersData?.map((user: userType) => {
     return <UserCard key={user.id} user={user} />;
@@ -61,7 +57,7 @@ const Users = () => {
   return (
     <div className={classes.tableContainer}>
       {loading ? (
-        renderLoading
+        <BeatLoader color={'#012269'} loading={loading} size={60} />
       ) : (
         <table className={classes.tableUser}>
           <thead>

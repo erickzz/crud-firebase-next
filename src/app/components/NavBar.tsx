@@ -16,7 +16,7 @@ const NavBar = () => {
     } else {
       setFirstRender(false);
     }
-  }, [ctx.isLogged]);
+  }, [ctx.isLogged, firstRender]);
 
   return (
     <>
@@ -30,7 +30,7 @@ const NavBar = () => {
             )}
           </li>
           <li>
-            {isLogged ? (
+            {!firstRender && isLogged ? (
               <Link href="/login" onClick={logout}>
                 Deslogar
               </Link>
