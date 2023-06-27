@@ -40,9 +40,10 @@ const Users = () => {
           setUsersData(data.result!);
         };
         retrieveUsers();
-        if (!ctx.isLogged && !firstRender) {
-          router.push('/login');
-        }
+      }
+      if (!ctx.isLogged) {
+        console.log('POAPDKASM');
+        router.push('/login');
       }
     } else {
       setFirstRender(false);
