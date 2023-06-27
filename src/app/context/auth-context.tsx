@@ -4,14 +4,14 @@ import { createContext, useEffect, useState } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import app from '@/app/firebase/config';
 
-const defaultContext = { isLogged: false };
+const defaultContext = { isLogged: true };
 
 const AuthContext = createContext(defaultContext);
 
 export const AuthContextProvider: React.FC<{ children: React.ReactNode }> = (
   props
 ) => {
-  const [isLogged, setIsLogged] = useState<boolean>(false);
+  const [isLogged, setIsLogged] = useState<boolean>(true);
 
   useEffect(() => {
     const auth = getAuth(app);
