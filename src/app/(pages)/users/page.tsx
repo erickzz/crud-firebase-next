@@ -6,7 +6,7 @@ import { DocumentData } from 'firebase/firestore';
 import AuthContext from '@/app/context/auth-context';
 import { useRouter } from 'next/navigation';
 import { BeatLoader } from 'react-spinners';
-import UserCard from '../../components/userCard';
+import UserCard from '../../components/UserCard';
 import classes from './users.module.css';
 
 type userType = {
@@ -20,22 +20,35 @@ type userType = {
 const Users = () => {
   const [usersData, setUsersData] = useState<DocumentData>();
   const [loading, setLoading] = useState<boolean>(true);
+  const [firstRender, setFirstRender] = useState<boolean>(true);
 
   const ctx = useContext(AuthContext);
 
   const router = useRouter();
 
   useEffect(() => {
-    if (ctx.isLogged) {
+    /* if (!ctx.isLogged) {
       router.push('/login');
+    } */
+
+    if (!firstRender) {
+      setLoading(true);
+      console.log(ctx.isLogged);
+      if (ctx.isLogged) {
+        const retrieveUsers = async () => {
+          const data = await getData('users');
+          setUsersData(data.result!);
+        };
+        retrieveUsers();
+        if (!ctx.isLogged && !firstRender) {
+          router.push('/login');
+        }
+      }
+    } else {
+      setFirstRender(false);
     }
-    setLoading(true);
-    const retrieveUsers = async () => {
-      const data = await getData('users');
-      setUsersData(data.result!);
-    };
-    retrieveUsers();
-  }, []);
+    setLoading(false);
+  }, [ctx.isLogged, firstRender]);
 
   const renderLoading = (
     <BeatLoader color={'#012269'} loading={loading} size={60} />
@@ -46,7 +59,7 @@ const Users = () => {
   });
   return (
     <div className={classes.tableContainer}>
-      {!usersData ? (
+      {loading ? (
         renderLoading
       ) : (
         <table className={classes.tableUser}>
