@@ -11,29 +11,36 @@ const NavBar = () => {
   const [isLogged, setIsLogged] = useState<boolean>(ctx.isLogged);
 
   useEffect(() => {
-    setIsLogged(ctx.isLogged);
+    if (!firstRender) {
+      setIsLogged(ctx.isLogged);
+    } else {
+      setFirstRender(false);
+    }
   }, [ctx.isLogged]);
+
   return (
-    <div className={classes.navbar}>
-      <ul className={classes.ulNav}>
-        <li>
-          {isLogged ? (
-            <a className={classes.logo}> Logo </a>
-          ) : (
-            <Link href="/">Logo</Link>
-          )}
-        </li>
-        <li>
-          {isLogged ? (
-            <Link href="/login" onClick={logout}>
-              Deslogar
-            </Link>
-          ) : (
-            <Link href="/login">Login</Link>
-          )}
-        </li>
-      </ul>
-    </div>
+    <>
+      <div className={classes.navbar}>
+        <ul className={classes.ulNav}>
+          <li>
+            {isLogged ? (
+              <a className={classes.logo}> Logo </a>
+            ) : (
+              <Link href="/">Logo</Link>
+            )}
+          </li>
+          <li>
+            {isLogged ? (
+              <Link href="/login" onClick={logout}>
+                Deslogar
+              </Link>
+            ) : (
+              <Link href="/login">Login</Link>
+            )}
+          </li>
+        </ul>
+      </div>
+    </>
   );
 };
 
