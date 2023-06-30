@@ -4,10 +4,10 @@ import { useEffect, useState, useContext } from 'react';
 import getData from '@/app/firebase/db/getData';
 import { DocumentData } from 'firebase/firestore';
 import AuthContext from '@/app/context/auth-context';
-import { useRouter } from 'next/navigation';
 import { BeatLoader } from 'react-spinners';
 import UserCard from '../../components/UserCard';
 import classes from './users.module.css';
+import { redirect } from 'next/navigation';
 
 type userType = {
   nome: string;
@@ -20,18 +20,26 @@ type userType = {
 const Users = () => {
   const [usersData, setUsersData] = useState<DocumentData>();
   const [loading, setLoading] = useState<boolean>(true);
-  const [firstRender, setFirstRender] = useState<boolean>(true);
 
   const ctx = useContext(AuthContext);
-
-  const router = useRouter();
 
   useEffect(() => {
     /* if (!ctx.isLogged) {
       router.push('/login');
     } */
 
-    if (!firstRender) {
+    if (!ctx.isLogged) {
+      redirect('/login');
+    } else {
+      const retrieveUsers = async () => {
+        const data = await getData('users');
+        setUsersData(data.result!);
+        setLoading(false);
+      };
+      retrieveUsers();
+    }
+
+    /* if (!firstRender) {
       setLoading(true);
       console.log(ctx.isLogged);
       if (ctx.isLogged) {
@@ -48,8 +56,8 @@ const Users = () => {
       }
     } else {
       setFirstRender(false);
-    }
-  }, [ctx.isLogged, firstRender, router]);
+    } */
+  }, [ctx.isLogged]);
 
   const renderUsers = usersData?.map((user: userType) => {
     return <UserCard key={user.id} user={user} />;
